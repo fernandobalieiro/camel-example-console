@@ -14,6 +14,7 @@ public class MyRouteBuilder extends RouteBuilder {
 
         from("stream:in?promptMessage=Enter something: ")
             .transform().simple("${body.toUpperCase()}")
-            .to("stream:out");
+            .to("stream:out")
+            .to("file://output?fileName=output.txt&fileExist=Append&appendChars=\\n");
     }
 }
